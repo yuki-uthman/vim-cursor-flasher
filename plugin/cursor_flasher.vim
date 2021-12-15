@@ -16,6 +16,7 @@ augroup cursor_flasher
     au!
 
     au FocusGained * call flasher#cursor#flash()
+    au FocusLost   * call flasher#cursor#off()
 augroup end
 
 let &cpo = s:save_cpo

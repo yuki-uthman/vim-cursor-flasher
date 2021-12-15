@@ -3,10 +3,15 @@ function! flasher#cursor#flash()
   call s:flash()
 endfunction
 
+function! flasher#cursor#off()
+  call s:flash_off(0)
+  call timer_stop(s:flash.toggle_timer)
+endfunction
+
 function! s:get_user_config() "{{{
   let highlight = get(g:, 'cursor_flasher_highlight', 'IncSearch')
-  let repeat = get(g:, 'cursor_flasher_repeat', 5)
-  let duration = get(g:, 'cursor_flasher_duration', 100)
+  let repeat = get(g:, 'cursor_flasher_repeat', 1)
+  let duration = get(g:, 'cursor_flasher_duration', 200)
 
   return {'highlight': highlight, 'repeat': repeat * 2 - 1, 'duration': duration}
 endfunction "}}}
